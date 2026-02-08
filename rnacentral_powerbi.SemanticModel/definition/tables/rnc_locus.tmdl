@@ -1,0 +1,92 @@
+table rnc_locus
+	lineageTag: 39e08558-8e45-4560-a0d0-8479595b1b89
+
+	column id
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c88d040-5db8-408e-b363-62f029624a8d
+		summarizeBy: sum
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column assembly_id
+		dataType: string
+		lineageTag: a123ddcc-da8d-42fa-962b-9c809f051ffd
+		summarizeBy: none
+		sourceColumn: assembly_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column locus_name
+		dataType: string
+		lineageTag: 225c0aa8-7847-4d10-a5d9-4531d8a887cc
+		summarizeBy: none
+		sourceColumn: locus_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column public_locus_name
+		dataType: string
+		lineageTag: 56d37f78-e21a-4eb6-8eec-4d4b47b59a24
+		summarizeBy: none
+		sourceColumn: public_locus_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column chromosome
+		dataType: string
+		lineageTag: d1a43b8c-7615-4037-9eac-16072bb58711
+		summarizeBy: none
+		sourceColumn: chromosome
+
+		annotation SummarizationSetBy = Automatic
+
+	column strand
+		dataType: string
+		lineageTag: 351aae60-ce52-443e-9e64-8a08db65fcea
+		summarizeBy: none
+		sourceColumn: strand
+
+		annotation SummarizationSetBy = Automatic
+
+	column locus_start
+		dataType: int64
+		formatString: 0
+		lineageTag: 4f492ba2-da9c-4843-b092-29bf9a766d8c
+		summarizeBy: sum
+		sourceColumn: locus_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column locus_stop
+		dataType: int64
+		formatString: 0
+		lineageTag: 586390f3-e9ca-4d62-aa28-0907b024605e
+		summarizeBy: sum
+		sourceColumn: locus_stop
+
+		annotation SummarizationSetBy = Automatic
+
+	column member_count
+		dataType: int64
+		formatString: 0
+		lineageTag: e438a02d-91c7-40b5-b9b9-33c64f76946b
+		summarizeBy: sum
+		sourceColumn: member_count
+
+		annotation SummarizationSetBy = Automatic
+
+	partition rnc_locus = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("dsn=RNAcentral_PG", [HierarchicalNavigation=true]),
+				    pfmegrnargs_Database = Source{[Name="pfmegrnargs",Kind="Database"]}[Data],
+				    rnacen_Schema = pfmegrnargs_Database{[Name="rnacen",Kind="Schema"]}[Data],
+				    rnc_locus_Table = rnacen_Schema{[Name="rnc_locus",Kind="Table"]}[Data]
+				in
+				    rnc_locus_Table
+
+	annotation PBI_ResultType = Table
+

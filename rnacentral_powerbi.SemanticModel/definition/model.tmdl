@@ -1,0 +1,23 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["ensembl_assembly","rnc_locus"]
+
+annotation PBI_RemovedChildren = [{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"39e08558-8e45-4560-a0d0-8479595b1b89","fromColumnLocalLineageTag":"a123ddcc-da8d-42fa-962b-9c809f051ffd","toTableLocalLineageTag":"afe87716-bf49-4aba-81f6-72fa6f379940","toColumnLocalLineageTag":"c2ed0b61-408c-4661-8d53-899893add1c7"}},"objectType":"Relationship"}]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table ensembl_assembly
+ref table rnc_locus
+ref table dim_assembly
+ref table Measure
+
+ref cultureInfo en-US
+

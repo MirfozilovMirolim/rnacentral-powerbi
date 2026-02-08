@@ -1,0 +1,4 @@
+relationship 2cab3fe2-97cd-8ba6-aa27-128a5a1052c0
+	fromColumn: rnc_locus.assembly_id
+	toColumn: dim_assembly.assembly_id
+

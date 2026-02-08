@@ -1,0 +1,51 @@
+table dim_assembly
+	lineageTag: ef2dcf33-7503-4af3-8466-4abfa078888c
+
+	column assembly_id
+		lineageTag: 7131f99e-4142-4734-b36e-4b00d786ce26
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: ensembl_assembly[assembly_id]
+
+		annotation SummarizationSetBy = Automatic
+
+	column assembly_full_name
+		lineageTag: 6ad23f45-b0fb-4421-92de-a1af4734b893
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [assembly_full_name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column division
+		lineageTag: 129db5db-a0a1-4032-a838-0e86cbf01b4a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [division]
+
+		annotation SummarizationSetBy = Automatic
+
+	column common_name
+		lineageTag: c2c397ca-1c24-4d67-a0c1-6ca530f76cc9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [common_name]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_assembly = calculated
+		mode: import
+		source = ```
+				
+				SUMMARIZE(
+				    ensembl_assembly,
+				    ensembl_assembly[assembly_id],
+				    "assembly_full_name", MAX(ensembl_assembly[assembly_full_name]),
+				    "division", MAX(ensembl_assembly[division]),
+				    "common_name", MAX(ensembl_assembly[common_name])
+				)
+				
+				```
+
+	annotation PBI_Id = b444376725b44eb5be0864e51cd3d827
+

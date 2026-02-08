@@ -1,0 +1,132 @@
+table ensembl_assembly
+	lineageTag: afe87716-bf49-4aba-81f6-72fa6f379940
+
+	column assembly_id
+		dataType: string
+		lineageTag: c2ed0b61-408c-4661-8d53-899893add1c7
+		summarizeBy: none
+		sourceColumn: assembly_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column assembly_full_name
+		dataType: string
+		lineageTag: 304a7143-d1e0-4a0b-bf78-687145c94756
+		summarizeBy: none
+		sourceColumn: assembly_full_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column gca_accession
+		dataType: string
+		lineageTag: 87931e95-7155-443a-bc32-78203c91a493
+		summarizeBy: none
+		sourceColumn: gca_accession
+
+		annotation SummarizationSetBy = Automatic
+
+	column assembly_ucsc
+		dataType: string
+		lineageTag: eae535b5-5ea7-45e6-8076-b81f58267f0e
+		summarizeBy: none
+		sourceColumn: assembly_ucsc
+
+		annotation SummarizationSetBy = Automatic
+
+	column common_name
+		dataType: string
+		lineageTag: 5adc2060-66d5-4e0d-80ca-e761f7ed35f9
+		summarizeBy: none
+		sourceColumn: common_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column taxid
+		dataType: int64
+		formatString: 0
+		lineageTag: f13a2070-7347-4d56-90f2-1a39bf660c32
+		summarizeBy: sum
+		sourceColumn: taxid
+
+		annotation SummarizationSetBy = Automatic
+
+	column ensembl_url
+		dataType: string
+		lineageTag: 2690bfff-3f53-45ea-8a66-b7a810560b75
+		summarizeBy: none
+		sourceColumn: ensembl_url
+
+		annotation SummarizationSetBy = Automatic
+
+	column division
+		dataType: string
+		lineageTag: 4299cad4-5c5e-4190-bf6c-c15430bd9b3e
+		summarizeBy: none
+		sourceColumn: division
+
+		annotation SummarizationSetBy = Automatic
+
+	column blat_mapping
+		dataType: int64
+		formatString: 0
+		lineageTag: 6a1b0f33-2879-4bf2-95af-b1a3297453b6
+		summarizeBy: sum
+		sourceColumn: blat_mapping
+
+		annotation SummarizationSetBy = Automatic
+
+	column example_chromosome
+		dataType: string
+		lineageTag: f4a09d32-6708-4595-9885-9725b8be635a
+		summarizeBy: none
+		sourceColumn: example_chromosome
+
+		annotation SummarizationSetBy = Automatic
+
+	column example_end
+		dataType: int64
+		formatString: 0
+		lineageTag: ee1e25e7-512d-44cf-97b1-85ca7670cbc8
+		summarizeBy: sum
+		sourceColumn: example_end
+
+		annotation SummarizationSetBy = Automatic
+
+	column example_start
+		dataType: int64
+		formatString: 0
+		lineageTag: 1d8bbc65-d856-49c5-a680-22da75c6aee8
+		summarizeBy: sum
+		sourceColumn: example_start
+
+		annotation SummarizationSetBy = Automatic
+
+	column subdomain
+		dataType: string
+		lineageTag: a484e12f-914e-4e75-a2fd-02d1d5696cae
+		summarizeBy: none
+		sourceColumn: subdomain
+
+		annotation SummarizationSetBy = Automatic
+
+	column selected_genome
+		dataType: string
+		lineageTag: a152b93e-a117-4c65-8a7f-f5cd823e0e72
+		summarizeBy: none
+		sourceColumn: selected_genome
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ensembl_assembly = m
+		mode: import
+		source =
+				let
+				    Source = Odbc.DataSource("dsn=RNAcentral_PG", [HierarchicalNavigation=true]),
+				    pfmegrnargs_Database = Source{[Name="pfmegrnargs",Kind="Database"]}[Data],
+				    rnacen_Schema = pfmegrnargs_Database{[Name="rnacen",Kind="Schema"]}[Data],
+				    ensembl_assembly_Table = rnacen_Schema{[Name="ensembl_assembly",Kind="Table"]}[Data]
+				in
+				    ensembl_assembly_Table
+
+	annotation PBI_ResultType = Table
+

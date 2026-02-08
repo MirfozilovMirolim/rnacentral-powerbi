@@ -1,0 +1,43 @@
+table Measure
+	lineageTag: 1779aa9f-96a0-4ca3-991b-e8b0722cf132
+
+	measure 'Total Assemblies' = ```
+			
+			DISTINCTCOUNT(dim_assembly[assembly_id])
+			
+			```
+		formatString: 0
+		lineageTag: b218af1a-4217-40ea-9989-89da6aa8f4bc
+
+	measure 'Total Loci' = ```
+			
+			COUNTROWS(rnc_locus)
+			
+			```
+		formatString: 0
+		lineageTag: 93eca592-16ac-4ac4-adf7-15e780491a7a
+
+	measure 'Avg Loci per Assembly' = ```
+			
+			DIVIDE([Total Loci], [Total Assemblies])
+			
+			```
+		lineageTag: 3d9a6b93-25dc-4987-8052-11d0be2c85b2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Value
+		isHidden
+		lineageTag: e0433eed-38d8-4954-83e6-8f1bfe79146d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Measure = calculated
+		mode: import
+		source = {""}
+
+	annotation PBI_Id = 22e5943020cf4b9eb982f01bad44a3f6
+

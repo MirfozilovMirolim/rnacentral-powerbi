@@ -1,0 +1,244 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.5.0/schema.json",
+  "name": "386fcef2e5c17ad74b21",
+  "position": {
+    "x": 398.07100816404022,
+    "y": 32.808050123409906,
+    "z": 0,
+    "height": 658.34820580975884,
+    "width": 754.58515283842792,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "rnc_locus"
+                    }
+                  },
+                  "Property": "chromosome"
+                }
+              },
+              "queryRef": "rnc_locus.chromosome",
+              "nativeQueryRef": "chromosome"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "rnc_locus"
+                        }
+                      },
+                      "Property": "locus_start"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(rnc_locus.locus_start)",
+              "nativeQueryRef": "Sum of locus_start"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "rnc_locus"
+                        }
+                      },
+                      "Property": "locus_stop"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(rnc_locus.locus_stop)",
+              "nativeQueryRef": "Sum of locus_stop"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "rnc_locus"
+                        }
+                      },
+                      "Property": "member_count"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(rnc_locus.member_count)",
+              "nativeQueryRef": "Sum of member_count"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "rnc_locus"
+                    }
+                  },
+                  "Property": "strand"
+                }
+              },
+              "queryRef": "rnc_locus.strand",
+              "nativeQueryRef": "strand"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "rnc_locus"
+                  }
+                },
+                "Property": "chromosome"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "173.8964530678181D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "rnc_locus.chromosome"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "150.61513422774016D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(rnc_locus.locus_start)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "161.24359535893313D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(rnc_locus.locus_stop)"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Minimal'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
